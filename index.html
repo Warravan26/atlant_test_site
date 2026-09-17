@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0f172a" />
+  <title>АТЛАНТ — предварительный расчёт фулфилмента</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <div class="brand">АТЛАНТ</div>
+      <div class="subbrand">Фулфилмент · FBO / FBS</div>
+    </div>
+    <button id="adminToggle" class="ghost tiny" type="button" aria-label="Настройки тарифов">⚙</button>
+  </header>
+
+  <main class="wrap">
+    <section class="hero card">
+      <span class="eyebrow">Предварительный расчёт</span>
+      <h1>Рассчитайте стоимость обработки и отгрузки товара</h1>
+      <p>Укажите товары, объём работ и схему отгрузки. Итог предварительный: точное количество транспортных коробов определяется после фактической упаковки.</p>
+      <button class="primary" data-go="goods" type="button">Начать расчёт</button>
+    </section>
+
+    <nav class="steps" aria-label="Этапы расчёта">
+      <button class="step active" data-step="goods">1. Товар</button>
+      <button class="step" data-step="unload">2. Разгрузка</button>
+      <button class="step" data-step="accept">3. Приёмка</button>
+      <button class="step" data-step="storage">4. Хранение</button>
+      <button class="step" data-step="ship">5. Отгрузка</button>
+      <button class="step" data-step="result">6. Итог</button>
+    </nav>
+
+    <section id="goods" class="panel active">
+      <div class="section-head">
+        <div><span class="eyebrow">Этап 1</span><h2>Товары</h2></div>
+        <button id="addSku" class="secondary" type="button">+ Добавить вид товара</button>
+      </div>
+      <p class="hint">Для каждого SKU укажите количество и габариты одной единицы в упаковке.</p>
+      <div id="skuList" class="stack"></div>
+      <div class="summary-strip">
+        <span>Всего товара <b id="goodsQty">0 шт.</b></span>
+        <span>Объём партии <b id="goodsVolume">0 л</b></span>
+      </div>
+      <div class="actions"><span></span><button class="primary" data-go="unload" type="button">Далее</button></div>
+    </section>
+
+    <section id="unload" class="panel">
+      <div class="section-head"><div><span class="eyebrow">Этап 2</span><h2>Разгрузка</h2></div></div>
+      <p class="hint">Отметьте только те типы грузовых мест, которые фактически приедут на склад.</p>
+      <div id="unloadRows" class="stack"></div>
+      <div class="actions"><button class="ghost" data-go="goods" type="button">Назад</button><button class="primary" data-go="accept" type="button">Далее</button></div>
+    </section>
+
+    <section id="accept" class="panel">
+      <div class="section-head"><div><span class="eyebrow">Этап 3</span><h2>Приёмка</h2></div></div>
+      <label class="switch-card">
+        <input id="acceptEnabled" type="checkbox" checked />
+        <span><b>Приёмка и пересчёт</b><small><span id="acceptRateLabel">10</span> ₽ за единицу товара</small></span>
+      </label>
+      <div class="calc-card"><span>Количество товара</span><b id="acceptQty">0 шт.</b></div>
+      <div class="calc-card"><span>Стоимость приёмки</span><b id="acceptCost">0 ₽</b></div>
+      <div class="actions"><button class="ghost" data-go="unload" type="button">Назад</button><button class="primary" data-go="storage" type="button">Далее</button></div>
+    </section>
+
+    <section id="storage" class="panel">
+      <div class="section-head"><div><span class="eyebrow">Этап 4</span><h2>Хранение</h2></div></div>
+      <div class="choice-grid">
+        <label class="choice"><input type="radio" name="storageMode" value="none" checked><span><b>Не считать</b><small>Если хранение не требуется</small></span></label>
+        <label class="choice"><input type="radio" name="storageMode" value="m3day"><span><b>По объёму</b><small><span id="storageM3RateLabel">62,50</span> ₽ / м³ / сутки</small></span></label>
+        <label class="choice"><input type="radio" name="storageMode" value="palletMonth"><span><b>Паллето-место</b><small><span id="storagePalletRateLabel">3 000</span> ₽ / месяц</small></span></label>
+      </div>
+      <div id="storageInputs" class="stack hidden">
+        <div class="field-row storage-field m3day hidden"><label>Объём хранения, м³<input id="storageM3" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0"></label><label>Суток<input id="storageDays" type="number" min="0" step="1" inputmode="numeric" placeholder="0"></label></div>
+        <div class="field-row storage-field palletMonth hidden"><label>Паллето-мест<input id="storagePallets" type="number" min="0" step="1" inputmode="numeric" placeholder="0"></label><label>Месяцев<input id="storageMonths" type="number" min="0" step="1" inputmode="numeric" placeholder="1"></label></div>
+      </div>
+      <div class="calc-card"><span>Хранение</span><b id="storageCost">0 ₽</b></div>
+      <div class="actions"><button class="ghost" data-go="accept" type="button">Назад</button><button class="primary" data-go="ship" type="button">Далее</button></div>
+    </section>
+
+    <section id="ship" class="panel">
+      <div class="section-head"><div><span class="eyebrow">Этап 5</span><h2>Отгрузка</h2></div></div>
+      <div class="segmented">
+        <label><input type="radio" name="shipMode" value="FBO" checked><span>FBO</span></label>
+        <label><input type="radio" name="shipMode" value="FBS"><span>FBS</span></label>
+      </div>
+
+      <div id="fboBlock" class="ship-block">
+        <div class="notice">Если товар после упаковки уже разложен по коробам, при FBO считаем, что все эти короба отгружаются.</div>
+        <div class="field-row"><label>Коробов к отгрузке<input id="fboBoxes" type="number" min="0" step="1" inputmode="numeric" placeholder="0"></label><label>Паллет рассчитывается автоматически<input id="fboPallets" type="text" value="0" readonly></label></div>
+        <div class="mini-grid">
+          <div class="tariff"><span>Формирование короба</span><b><span id="fboBoxRateLabel">150</span> ₽ / кор.</b></div>
+          <div class="tariff"><span>Доставка короба</span><b><span id="fboDeliveryRateLabel">250</span> ₽ / кор.</b></div>
+          <div class="tariff"><span>Паллет</span><b><span id="palletRateLabel">600</span> ₽</b></div>
+          <div class="tariff"><span>Стрейчевание</span><b><span id="stretchRateLabel">350</span> ₽ / пал.</b></div>
+        </div>
+        <label class="switch-card">
+          <input id="fboRebox" type="checkbox" />
+          <span><b>Нужно переложить товар в новые транспортные короба</b><small>Дополнительно: новый короб + сборка каждой единицы товара.</small></span>
+        </label>
+        <div id="reboxFields" class="field-row hidden"><label>Новых коробов<input id="newBoxes" type="number" min="0" step="1" inputmode="numeric" placeholder="0"></label><div class="tariff inline"><span>Доплата</span><b><span id="newBoxRateLabel">100</span> ₽/кор. + <span id="reboxItemRateLabel">20</span> ₽/шт.</b></div></div>
+      </div>
+
+      <div id="fbsBlock" class="ship-block hidden">
+        <div class="notice">Размер короба для предварительного расчёта: 60 × 40 × 40 см (96 л). Точное количество коробов может отличаться из-за формы товара и неполной укладки.</div>
+        <div class="choice-grid">
+          <label class="choice"><input type="radio" name="fbsBoxesMode" value="estimate" checked><span><b>Рассчитать примерно</b><small>По суммарному объёму партии</small></span></label>
+          <label class="choice"><input type="radio" name="fbsBoxesMode" value="manual"><span><b>Указать короба</b><small>Если клиент уже знает количество</small></span></label>
+        </div>
+        <div class="field-row"><label>Коробов FBS<input id="fbsBoxes" type="number" min="0" step="1" inputmode="numeric" placeholder="0"></label><label>Заказов в день<input id="dailyOrders" type="number" min="0" step="1" inputmode="numeric" placeholder="0"></label></div>
+        <div class="calc-note" id="fbsBoxHint"></div>
+        <div class="tariff-block">
+          <h3>Обработка товара</h3>
+          <p><b><span id="fbsVolumeRateLabel">10</span> ₽ за литр</b>, но не менее <b><span id="fbsVolumeMinLabel">20</span> ₽ за единицу товара</b>.</p>
+          <p>Транспортный короб 60 × 40 × 40 см — <b><span id="fbsBoxRateLabel">100</span> ₽/короб</b>.</p>
+        </div>
+        <div class="tariff-block">
+          <h3>Доставка</h3>
+          <p>До установленного дневного порога — <b><span id="fbsDeliveryBoxRateLabel">500</span> ₽ за короб</b>. Если заказов больше порога, отдельная плата за доставку коробов не начисляется: остаётся обработка по объёму.</p>
+          <label>Дневной порог заказов <input id="dailyThreshold" type="number" min="0" step="1" inputmode="numeric" placeholder="не задан"></label>
+          <small class="warning">Пока числовой порог не указан, калькулятор применяет доставку 500 ₽/короб и не переключает схему автоматически.</small>
+        </div>
+      </div>
+      <div class="actions"><button class="ghost" data-go="storage" type="button">Назад</button><button class="primary" data-go="result" type="button">Показать расчёт</button></div>
+    </section>
+
+    <section id="result" class="panel">
+      <div class="section-head"><div><span class="eyebrow">Этап 6</span><h2>Предварительный расчёт</h2></div><button id="copyCalc" class="secondary" type="button">Скопировать</button></div>
+      <div class="total-card"><span>Итого</span><b id="grandTotal">0 ₽</b><small id="perUnit">0 ₽ / шт.</small></div>
+      <div id="resultRows" class="result-list"></div>
+      <div class="notice important">Расчёт предварительный. Фактическое количество коробов, паллет и стоимость отдельных операций уточняются после приёмки и упаковки товара.</div>
+      <div class="decision">
+        <h3>Хотите продолжить?</h3>
+        <p>Можно подготовить заявку на звонок менеджера или завершить расчёт.</p>
+        <button id="callbackOpen" class="primary" type="button">Заказать звонок</button>
+        <button id="finishBtn" class="ghost" type="button">Завершить расчёт</button>
+      </div>
+      <div class="actions"><button class="ghost" data-go="ship" type="button">Назад</button><button id="printBtn" class="secondary" type="button">Печать / PDF</button></div>
+    </section>
+
+    <section id="callback" class="panel modal-card hidden">
+      <div class="section-head"><div><span class="eyebrow">Заявка</span><h2>Заказать звонок</h2></div><button id="callbackClose" class="ghost tiny" type="button">✕</button></div>
+      <div class="stack">
+        <label>Имя<input id="cbName" type="text" placeholder="Как к вам обращаться"></label>
+        <label>Телефон<input id="cbPhone" type="tel" placeholder="+7 ..."></label>
+        <label>Комментарий<textarea id="cbComment" rows="3" placeholder="Удобное время для звонка"></textarea></label>
+      </div>
+      <div class="notice">Сайт подготовит текст заявки и откроет Telegram для отправки менеджеру АТЛАНТ. Это позволяет работать на бесплатном статическом хостинге без отдельного сервера.</div>
+      <button id="sendCallback" class="primary" type="button">Подготовить заявку и открыть Telegram</button>
+    </section>
+
+    <section id="adminPanel" class="admin-panel hidden">
+      <div class="section-head"><div><span class="eyebrow">Локальные настройки</span><h2>Тарифы</h2></div><button id="adminClose" class="ghost tiny" type="button">✕</button></div>
+      <p class="hint">Изменения сохраняются только в этом браузере. Клиентский расчёт использует сохранённые здесь значения.</p>
+      <div id="adminFields" class="admin-grid"></div>
+      <div class="actions"><button id="resetRates" class="ghost" type="button">Сбросить</button><button id="saveRates" class="primary" type="button">Сохранить тарифы</button></div>
+    </section>
+  </main>
+
+  <template id="skuTemplate">
+    <article class="sku-card">
+      <div class="sku-head"><b class="sku-title">Товар</b><button class="removeSku ghost tiny" type="button">Удалить</button></div>
+      <div class="field-row"><label>Название / SKU<input class="skuName" type="text" placeholder="Например, чехол"></label><label>Количество, шт.<input class="skuQty" type="number" min="0" step="1" inputmode="numeric" placeholder="0"></label></div>
+      <div class="field-row three"><label>Длина, см<input class="skuL" type="number" min="0" step="0.1" inputmode="decimal"></label><label>Ширина, см<input class="skuW" type="number" min="0" step="0.1" inputmode="decimal"></label><label>Высота, см<input class="skuH" type="number" min="0" step="0.1" inputmode="decimal"></label></div>
+      <div class="sku-meta"><span>Объём 1 шт.: <b class="unitLiters">0 л</b></span><span>Объём позиции: <b class="lineLiters">0 л</b></span></div>
+    </article>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
