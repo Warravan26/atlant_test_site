@@ -23,3 +23,17 @@
 @media(max-width:780px){.visual-hero{grid-template-columns:1fr}.hero-art{order:-1;min-height:210px;margin:-10px -6px -10px}.hero-art svg{max-width:360px}.stage-banner{grid-template-columns:minmax(0,1fr) 185px}.stage-svg{max-width:185px}}
 @media(max-width:560px){.visual-hero{gap:8px}.hero-art{min-height:178px}.hero-art svg{max-width:310px}.stage-banner{grid-template-columns:1fr;padding:15px;margin-bottom:16px}.stage-svg{justify-self:center;max-width:210px;margin-top:-2px}.stage-banner strong{font-size:17px}.brand:after{display:none}.hero-note{font-size:10px}.hero-actions .primary{width:100%}.section-head{margin-bottom:10px}}
 @media print{.hero-art,.stage-banner{display:none!important}}
+
+/* --- ATLANT v4: контакты, маркировка, упаковка, заявка --- */
+.req{color:#b42318;font-weight:900;margin-left:2px}
+.block-title{margin:18px 0 10px;font-size:16px;letter-spacing:.01em}
+.callback-block{margin-top:18px;padding:18px;border:1px solid var(--line);border-radius:18px;background:#fbfcfd}
+.callback-block h3{margin:2px 0 0}
+.decision button{margin-right:8px;margin-top:6px}
+.panel .summary-strip span{white-space:nowrap}
+#boxForecast .result-row small{display:block;color:var(--muted);margin-top:3px}
+.admin-grid .admin-field small{display:block;color:var(--muted);margin-top:2px}
+@media(max-width:560px){
+  .steps{gap:6px}
+  .step{padding:8px 10px;font-size:11px}
+}
