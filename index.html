@@ -22,104 +22,137 @@
       <div class="hero-copy">
         <span class="eyebrow">Предварительный расчёт</span>
         <h1>Рассчитайте стоимость обработки и отгрузки товара</h1>
-        <p>Укажите товары, объём работ и схему отгрузки. Итог предварительный: точное количество транспортных коробов определяется после фактической упаковки.</p>
-        <div class="hero-actions"><button class="primary" data-go="goods" type="button">Начать расчёт</button><span class="hero-note">Москва · FBO / FBS</span></div>
+        <p>Укажите контакты, товары, объём работ и схему отгрузки. Итог предварительный: точное количество транспортных коробов определяется после фактической упаковки.</p>
+        <div class="hero-actions">
+          <button class="primary" data-go="contacts" type="button">Начать расчёт</button>
+          <span class="hero-note">Москва · FBO / FBS</span>
+        </div>
       </div>
       <div class="hero-art" aria-hidden="true">
         <svg viewBox="0 0 520 360" role="img">
-          <defs>
-            <pattern id="dots" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.2" fill="#17243b" opacity=".12"/></pattern>
-          </defs>
+          <defs><pattern id="dots" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.2" fill="#17243b" opacity=".12"/></pattern></defs>
           <rect x="18" y="18" width="484" height="324" rx="28" fill="#f4ead3"/>
           <rect x="18" y="18" width="484" height="324" rx="28" fill="url(#dots)"/>
           <circle cx="420" cy="82" r="48" fill="#d6a83a" opacity=".9"/>
           <rect x="58" y="94" width="282" height="177" rx="14" fill="#fffaf0" stroke="#17243b" stroke-width="6"/>
           <path d="M70 94L112 54H326L340 94" fill="#d6a83a" stroke="#17243b" stroke-width="6"/>
-          <rect x="88" y="126" width="52" height="82" fill="#d4d9df" stroke="#17243b" stroke-width="5"/>
-          <rect x="160" y="126" width="52" height="82" fill="#d4d9df" stroke="#17243b" stroke-width="5"/>
           <rect x="232" y="126" width="72" height="145" fill="#17243b"/>
-          <rect x="246" y="144" width="44" height="34" fill="#f7f0df"/>
-          <g transform="translate(318 208)">
-            <rect x="0" y="26" width="152" height="64" rx="12" fill="#17243b"/>
-            <rect x="12" y="4" width="92" height="56" rx="9" fill="#d6a83a" stroke="#17243b" stroke-width="5"/>
-            <rect x="102" y="42" width="52" height="48" rx="8" fill="#fffaf0" stroke="#17243b" stroke-width="5"/>
-            <circle cx="38" cy="96" r="17" fill="#fffaf0" stroke="#17243b" stroke-width="6"/>
-            <circle cx="124" cy="96" r="17" fill="#fffaf0" stroke="#17243b" stroke-width="6"/>
-          </g>
-          <g transform="translate(72 232)">
-            <rect x="0" y="54" width="188" height="12" rx="3" fill="#17243b"/>
-            <rect x="14" y="44" width="160" height="10" fill="#d6a83a" stroke="#17243b" stroke-width="4"/>
-            <rect x="18" y="2" width="50" height="42" fill="#fff7e6" stroke="#17243b" stroke-width="4"/>
-            <rect x="70" y="-8" width="52" height="52" fill="#e9c970" stroke="#17243b" stroke-width="4"/>
-            <rect x="124" y="10" width="48" height="34" fill="#fff7e6" stroke="#17243b" stroke-width="4"/>
-            <rect x="35" y="12" width="16" height="7" fill="#17243b" opacity=".7"/>
-            <rect x="86" y="8" width="20" height="7" fill="#17243b" opacity=".7"/>
-          </g>
+          <g transform="translate(318 208)"><rect x="0" y="26" width="152" height="64" rx="12" fill="#17243b"/><rect x="12" y="4" width="92" height="56" rx="9" fill="#d6a83a" stroke="#17243b" stroke-width="5"/><circle cx="38" cy="96" r="17" fill="#fffaf0" stroke="#17243b" stroke-width="6"/><circle cx="124" cy="96" r="17" fill="#fffaf0" stroke="#17243b" stroke-width="6"/></g>
           <text x="374" y="145" text-anchor="middle" font-size="23" font-weight="900" fill="#17243b" letter-spacing="2">АТЛАНТ</text>
-          <text x="374" y="169" text-anchor="middle" font-size="13" font-weight="700" fill="#17243b">ФУЛФИЛМЕНТ</text>
         </svg>
       </div>
     </section>
 
     <nav class="steps" aria-label="Этапы расчёта">
-      <button class="step active" data-step="goods">1. Товар</button>
-      <button class="step" data-step="unload">2. Разгрузка</button>
-      <button class="step" data-step="accept">3. Приёмка</button>
-      <button class="step" data-step="storage">4. Хранение</button>
-      <button class="step" data-step="ship">5. Отгрузка</button>
-      <button class="step" data-step="result">6. Итог</button>
+      <button class="step active" data-step="contacts">1. Контакты</button>
+      <button class="step" data-step="goods">2. Товар</button>
+      <button class="step" data-step="unload">3. Разгрузка</button>
+      <button class="step" data-step="accept">4. Приёмка</button>
+      <button class="step" data-step="marking">5. Маркировка</button>
+      <button class="step" data-step="packing">6. Упаковка</button>
+      <button class="step" data-step="storage">7. Хранение</button>
+      <button class="step" data-step="ship">8. Отгрузка</button>
+      <button class="step" data-step="result">9. Итог</button>
     </nav>
 
-    <section id="goods" class="panel active">
+    <!-- 1. КОНТАКТЫ -->
+    <section id="contacts" class="panel active">
+      <div class="section-head"><div><span class="eyebrow">Этап 1</span><h2>Контакты для расчёта</h2></div></div>
+      <div class="stage-banner"><div><span class="stage-kicker">01 · КОНТАКТЫ</span><strong>Кому готовим расчёт</strong><small>Эти данные сохраняются в журнале заявок вместе с расчётом и временем подачи.</small></div></div>
+      <div class="stack">
+        <label>Организация <span class="req">*</span><input id="org" type="text" placeholder="ООО «Ромашка»" required></label>
+        <label>Telegram аккаунт <span class="req">*</span><input id="tg" type="text" placeholder="@username" required></label>
+        <label>Телефон заказчика <span class="req">*</span><input id="phone" type="tel" placeholder="+7 ..." required></label>
+      </div>
+      <p class="hint">Все три поля обязательны. Без них расчёт не будет сохранён в журнал.</p>
+      <div class="actions"><span></span><button class="primary" data-go="goods" type="button">Далее</button></div>
+    </section>
+
+    <!-- 2. ТОВАР -->
+    <section id="goods" class="panel">
       <div class="section-head">
-        <div><span class="eyebrow">Этап 1</span><h2>Товары</h2></div>
+        <div><span class="eyebrow">Этап 2</span><h2>Товары</h2></div>
         <button id="addSku" class="secondary" type="button">+ Добавить вид товара</button>
       </div>
-      <div class="stage-banner">
-        <div><span class="stage-kicker">01 · ТОВАР</span><strong>Габариты → объём → партия</strong><small>Укажите размеры каждой позиции — калькулятор сам переведёт их в литры.</small></div>
-        <svg class="stage-svg" viewBox="0 0 240 150" aria-hidden="true"><rect x="10" y="18" width="220" height="120" rx="22" fill="#f3ead7"/><path d="M38 104h150v12H38z" fill="#17243b"/><path d="M48 92h130v12H48z" fill="#d6a83a" stroke="#17243b" stroke-width="4"/><rect x="50" y="45" width="54" height="47" fill="#fffaf0" stroke="#17243b" stroke-width="4"/><rect x="106" y="31" width="58" height="61" fill="#e9c970" stroke="#17243b" stroke-width="4"/><rect x="166" y="57" width="45" height="35" fill="#fffaf0" stroke="#17243b" stroke-width="4"/><rect x="66" y="57" width="18" height="7" fill="#17243b"/><rect x="126" y="44" width="20" height="7" fill="#17243b"/><path d="M31 41h27M31 41l8-8M31 41l8 8" stroke="#17243b" stroke-width="4" fill="none"/><text x="31" y="27" font-size="11" font-weight="800" fill="#17243b">СМ</text></svg>
-      </div>
+      <div class="stage-banner"><div><span class="stage-kicker">02 · ТОВАР</span><strong>Габариты → объём → партия</strong><small>По габаритам калькулятор посчитает объём и примерное количество коробов 60×40×40.</small></div></div>
       <p class="hint">Для каждого SKU укажите количество и габариты одной единицы в упаковке.</p>
       <div id="skuList" class="stack"></div>
       <div class="summary-strip">
         <span>Всего товара <b id="goodsQty">0 шт.</b></span>
         <span>Объём партии <b id="goodsVolume">0 л</b></span>
+        <span>Примерно коробов 60×40×40 <b id="goodsBoxes">0</b></span>
       </div>
-      <div class="actions"><span></span><button class="primary" data-go="unload" type="button">Далее</button></div>
+      <div class="actions"><button class="ghost" data-go="contacts" type="button">Назад</button><button class="primary" data-go="unload" type="button">Далее</button></div>
     </section>
 
+    <!-- 3. РАЗГРУЗКА -->
     <section id="unload" class="panel">
-      <div class="section-head"><div><span class="eyebrow">Этап 2</span><h2>Разгрузка</h2></div></div>
-      <div class="stage-banner">
-        <div><span class="stage-kicker">02 · РАЗГРУЗКА</span><strong>Принимаем грузовые места</strong><small>Паллеты, короба, баулы и обрешётка — отмечайте только то, что реально приехало.</small></div>
-        <svg class="stage-svg" viewBox="0 0 240 150" aria-hidden="true"><rect x="10" y="18" width="220" height="120" rx="22" fill="#f3ead7"/><rect x="36" y="55" width="104" height="48" rx="8" fill="#d6a83a" stroke="#17243b" stroke-width="4"/><path d="M140 68h37l20 18v17h-57z" fill="#fffaf0" stroke="#17243b" stroke-width="4"/><circle cx="70" cy="111" r="13" fill="#fff" stroke="#17243b" stroke-width="5"/><circle cx="169" cy="111" r="13" fill="#fff" stroke="#17243b" stroke-width="5"/><path d="M28 116h187" stroke="#17243b" stroke-width="5"/><rect x="53" y="34" width="34" height="21" fill="#fffaf0" stroke="#17243b" stroke-width="3"/><rect x="89" y="29" width="34" height="26" fill="#e9c970" stroke="#17243b" stroke-width="3"/><path d="M202 45v28M202 73l-8-9M202 73l8-9" stroke="#17243b" stroke-width="4" fill="none"/></svg>
-      </div>
-      <p class="hint">Отметьте только те типы грузовых мест, которые фактически приедут на склад.</p>
+      <div class="section-head"><div><span class="eyebrow">Этап 3</span><h2>Разгрузка</h2></div></div>
+      <div class="stage-banner"><div><span class="stage-kicker">03 · РАЗГРУЗКА</span><strong>Принимаем грузовые места</strong><small>Паллеты, короба, баулы и обрешётка — отмечайте только то, что реально приехало.</small></div></div>
+      <p class="hint">Разгрузка оплачивается отдельно от приёмки.</p>
       <div id="unloadRows" class="stack"></div>
       <div class="actions"><button class="ghost" data-go="goods" type="button">Назад</button><button class="primary" data-go="accept" type="button">Далее</button></div>
     </section>
 
+    <!-- 4. ПРИЁМКА -->
     <section id="accept" class="panel">
-      <div class="section-head"><div><span class="eyebrow">Этап 3</span><h2>Приёмка</h2></div></div>
-      <div class="stage-banner">
-        <div><span class="stage-kicker">03 · ПРИЁМКА</span><strong>Пересчёт и контроль по WMS</strong><small>Количество фиксируется, товар проходит сканирование перед дальнейшей обработкой.</small></div>
-        <svg class="stage-svg" viewBox="0 0 240 150" aria-hidden="true"><rect x="10" y="18" width="220" height="120" rx="22" fill="#f3ead7"/><rect x="48" y="48" width="66" height="60" fill="#e9c970" stroke="#17243b" stroke-width="4"/><path d="M132 36h45a11 11 0 0 1 11 11v55a11 11 0 0 1-11 11h-45z" fill="#17243b"/><rect x="141" y="47" width="38" height="39" rx="4" fill="#fffaf0"/><path d="M142 96h37" stroke="#d6a83a" stroke-width="7"/><path d="M69 63h24M69 72h24M69 81h17" stroke="#17243b" stroke-width="4"/><path d="M123 46l13 10M123 61l13 7M123 76l13 4" stroke="#d6a83a" stroke-width="3"/><circle cx="36" cy="102" r="12" fill="#17243b"/><path d="M32 102l4 4 8-10" stroke="#fffaf0" stroke-width="3" fill="none"/></svg>
-      </div>
-      <label class="switch-card">
-        <input id="acceptEnabled" type="checkbox" checked />
-        <span><b>Приёмка и пересчёт</b><small><span id="acceptRateLabel">10</span> ₽ за единицу товара</small></span>
-      </label>
+      <div class="section-head"><div><span class="eyebrow">Этап 4</span><h2>Приёмка</h2></div></div>
+      <div class="stage-banner"><div><span class="stage-kicker">04 · ПРИЁМКА</span><strong>Пересчёт, сортировка, сканирование</strong><small>Приёмка включает сортировку и пересчёт. Разгрузка считается отдельно.</small></div></div>
+      <label class="switch-card"><input id="acceptEnabled" type="checkbox" checked /><span><b>Приёмка и пересчёт</b><small>Включает сортировку. <span id="acceptRateLabel">10</span> ₽ за единицу товара</small></span></label>
       <div class="calc-card"><span>Количество товара</span><b id="acceptQty">0 шт.</b></div>
-      <div class="calc-card"><span>Стоимость приёмки</span><b id="acceptCost">0 ₽</b></div>
-      <div class="actions"><button class="ghost" data-go="unload" type="button">Назад</button><button class="primary" data-go="storage" type="button">Далее</button></div>
+      <div class="calc-card"><span>Стоимость приёмки (с сортировкой)</span><b id="acceptCost">0 ₽</b></div>
+      <div class="actions"><button class="ghost" data-go="unload" type="button">Назад</button><button class="primary" data-go="marking" type="button">Далее</button></div>
     </section>
 
-    <section id="storage" class="panel">
-      <div class="section-head"><div><span class="eyebrow">Этап 4</span><h2>Хранение</h2></div></div>
-      <div class="stage-banner">
-        <div><span class="stage-kicker">04 · ХРАНЕНИЕ</span><strong>Товар на понятных местах хранения</strong><small>Можно считать по объёму или по паллето-местам — в зависимости от договорённости.</small></div>
-        <svg class="stage-svg" viewBox="0 0 240 150" aria-hidden="true"><rect x="10" y="18" width="220" height="120" rx="22" fill="#f3ead7"/><path d="M42 36v83M198 36v83M42 62h156M42 94h156" stroke="#17243b" stroke-width="6"/><g fill="#d6a83a" stroke="#17243b" stroke-width="3"><rect x="54" y="39" width="36" height="23"/><rect x="94" y="44" width="41" height="18" fill="#fffaf0"/><rect x="139" y="36" width="46" height="26" fill="#e9c970"/><rect x="53" y="68" width="48" height="26" fill="#fffaf0"/><rect x="107" y="70" width="34" height="24"/><rect x="148" y="67" width="38" height="27" fill="#fffaf0"/></g><path d="M54 110h54M132 110h54" stroke="#d6a83a" stroke-width="8"/><path d="M50 118h62M128 118h62" stroke="#17243b" stroke-width="5"/></svg>
+    <!-- 5. МАРКИРОВКА -->
+    <section id="marking" class="panel">
+      <div class="section-head"><div><span class="eyebrow">Этап 5</span><h2>Маркировка</h2></div></div>
+      <div class="stage-banner"><div><span class="stage-kicker">05 · МАРКИРОВКА</span><strong>Идёт первой в подготовке</strong><small>Клиент уточняет, сколько этикеток нужно нанести.</small></div></div>
+      <label class="switch-card"><input id="markingEnabled" type="checkbox" /><span><b>Нужна маркировка</b><small>Нанесение этикеток на товар. <span id="markingRateLabel">8</span> ₽ за этикетку</small></span></label>
+      <div id="markingFields" class="field-row hidden">
+        <label>Сколько этикеток нужно<input id="labelsCount" type="number" min="0" step="1" inputmode="numeric" placeholder="0"></label>
+        <div class="calc-card"><span>Стоимость маркировки</span><b id="markingCost">0 ₽</b></div>
       </div>
+      <div class="actions"><button class="ghost" data-go="accept" type="button">Назад</button><button class="primary" data-go="packing" type="button">Далее</button></div>
+    </section>
+
+    <!-- 6. УПАКОВКА -->
+    <section id="packing" class="panel">
+      <div class="section-head"><div><span class="eyebrow">Этап 6</span><h2>Упаковка</h2></div></div>
+      <div class="stage-banner"><div><span class="stage-kicker">06 · УПАКОВКА</span><strong>Раскладка по коробам 60×40×40</strong><small>Показываем, сколько товара примерно поместится в стандартный короб, и считаем короба.</small></div></div>
+
+      <label class="switch-card">
+        <input id="packingEnabled" type="checkbox" checked />
+        <span><b>Да, нужна подготовка</b><small>Если снять галочку — товар считается уже готовым, короба переходят в отгрузку автоматически.</small></span>
+      </label>
+
+      <div id="packingBlock">
+        <h3 class="block-title">Раскладка товара по коробам 60×40×40</h3>
+        <div class="choice-grid">
+          <label class="choice"><input type="radio" name="packingMode" value="own" checked><span><b>Свой короб 60×40×40</b><small>Кладём в наш стандартный короб — 96 л</small></span></label>
+          <label class="choice"><input type="radio" name="packingMode" value="factory"><span><b>Заводские короба</b><small>Товар приходит в своих коробах</small></span></label>
+        </div>
+
+        <div id="factoryBoxesWrap" class="field-row hidden">
+          <label>Сколько заводских коробов<input id="factoryBoxes" type="number" min="0" step="1" inputmode="numeric" placeholder="0"></label>
+        </div>
+
+        <div class="notice">
+          Упаковка товара в ПОФ-плёнку доступна по согласованию. Уточним стоимость при подтверждении заявки.
+        </div>
+
+        <h3 class="block-title">Примерное количество коробов по каждому товару</h3>
+        <div id="boxForecast" class="result-list"></div>
+        <div class="calc-card"><span>Всего коробов (примерно)</span><b id="packingBoxesTotal">0</b></div>
+      </div>
+
+      <div class="actions"><button class="ghost" data-go="marking" type="button">Назад</button><button class="primary" data-go="storage" type="button">Далее</button></div>
+    </section>
+
+    <!-- 7. ХРАНЕНИЕ -->
+    <section id="storage" class="panel">
+      <div class="section-head"><div><span class="eyebrow">Этап 7</span><h2>Хранение</h2></div></div>
+      <div class="stage-banner"><div><span class="stage-kicker">07 · ХРАНЕНИЕ</span><strong>Товар на понятных местах хранения</strong><small>Можно считать по объёму или по паллето-местам.</small></div></div>
       <div class="choice-grid">
         <label class="choice"><input type="radio" name="storageMode" value="none" checked><span><b>Не считать</b><small>Если хранение не требуется</small></span></label>
         <label class="choice"><input type="radio" name="storageMode" value="m3day"><span><b>По объёму</b><small><span id="storageM3RateLabel">62,50</span> ₽ / м³ / сутки</small></span></label>
@@ -130,93 +163,109 @@
         <div class="field-row storage-field palletMonth hidden"><label>Паллето-мест<input id="storagePallets" type="number" min="0" step="1" inputmode="numeric" placeholder="0"></label><label>Месяцев<input id="storageMonths" type="number" min="0" step="1" inputmode="numeric" placeholder="1"></label></div>
       </div>
       <div class="calc-card"><span>Хранение</span><b id="storageCost">0 ₽</b></div>
-      <div class="actions"><button class="ghost" data-go="accept" type="button">Назад</button><button class="primary" data-go="ship" type="button">Далее</button></div>
+      <div class="actions"><button class="ghost" data-go="packing" type="button">Назад</button><button class="primary" data-go="ship" type="button">Далее</button></div>
     </section>
 
+    <!-- 8. ОТГРУЗКА -->
     <section id="ship" class="panel">
-      <div class="section-head"><div><span class="eyebrow">Этап 5</span><h2>Отгрузка</h2></div></div>
-      <div class="stage-banner">
-        <div><span class="stage-kicker">05 · ОТГРУЗКА</span><strong>FBO или FBS — разные схемы</strong><small>Выберите модель отгрузки: паллеты и короба FBO или ежедневная обработка FBS.</small></div>
-        <svg class="stage-svg" viewBox="0 0 240 150" aria-hidden="true"><rect x="10" y="18" width="220" height="120" rx="22" fill="#f3ead7"/><path d="M120 34v84" stroke="#17243b" stroke-width="4" stroke-dasharray="5 6"/><text x="58" y="41" font-size="14" font-weight="900" fill="#17243b">FBO</text><rect x="31" y="89" width="71" height="8" fill="#17243b"/><rect x="35" y="80" width="63" height="9" fill="#d6a83a" stroke="#17243b" stroke-width="3"/><g fill="#fffaf0" stroke="#17243b" stroke-width="3"><rect x="40" y="48" width="27" height="32"/><rect x="69" y="55" width="25" height="25"/></g><text x="164" y="41" font-size="14" font-weight="900" fill="#17243b">FBS</text><rect x="143" y="61" width="45" height="35" fill="#e9c970" stroke="#17243b" stroke-width="3"/><path d="M148 70h35M148 77h25" stroke="#17243b" stroke-width="3"/><path d="M141 105h59" stroke="#17243b" stroke-width="5"/><circle cx="153" cy="111" r="9" fill="#fff" stroke="#17243b" stroke-width="4"/><circle cx="187" cy="111" r="9" fill="#fff" stroke="#17243b" stroke-width="4"/></svg>
-      </div>
+      <div class="section-head"><div><span class="eyebrow">Этап 8</span><h2>Отгрузка</h2></div></div>
+      <div class="stage-banner"><div><span class="stage-kicker">08 · ОТГРУЗКА</span><strong>FBO или FBS</strong><small>Разные схемы: FBO — все короба после упаковки, FBS — обработка по объёму.</small></div></div>
       <div class="segmented">
-        <label><input type="radio" name="shipMode" value="FBO" checked><span>FBO</span></label>
-        <label><input type="radio" name="shipMode" value="FBS"><span>FBS</span></label>
+        <label><input type="radio" name="shipMode" value="FBO" checked><span>5А · FBO</span></label>
+        <label><input type="radio" name="shipMode" value="FBS"><span>5Б · FBS</span></label>
       </div>
 
       <div id="fboBlock" class="ship-block">
-        <div class="notice">Если товар после упаковки уже разложен по коробам, при FBO считаем, что все эти короба отгружаются.</div>
-        <div class="field-row"><label>Коробов к отгрузке<input id="fboBoxes" type="number" min="0" step="1" inputmode="numeric" placeholder="0"></label><label>Паллет рассчитывается автоматически<input id="fboPallets" type="text" value="0" readonly></label></div>
+        <div class="notice">Если товар после упаковки уже разложен по коробам, при FBO считаем, что все эти короба отгружаются. Количество берём с этапа «УПАКОВКА».</div>
+        <div class="field-row">
+          <label>Коробов к отгрузке<input id="fboBoxes" type="number" min="0" step="1" inputmode="numeric" placeholder="0"></label>
+          <label>Паллет (16 коробов на паллету)<input id="fboPallets" type="text" value="0" readonly></label>
+        </div>
         <div class="mini-grid">
           <div class="tariff"><span>Формирование короба</span><b><span id="fboBoxRateLabel">150</span> ₽ / кор.</b></div>
-          <div class="tariff"><span>Доставка короба</span><b><span id="fboDeliveryRateLabel">250</span> ₽ / кор.</b></div>
+          <div class="tariff"><span>Доставка в пределах города</span><b><span id="fboDeliveryRateLabel">250</span> ₽ / кор.</b></div>
           <div class="tariff"><span>Паллет</span><b><span id="palletRateLabel">600</span> ₽</b></div>
           <div class="tariff"><span>Стрейчевание</span><b><span id="stretchRateLabel">350</span> ₽ / пал.</b></div>
         </div>
         <label class="switch-card">
           <input id="fboRebox" type="checkbox" />
-          <span><b>Нужно переложить товар в новые транспортные короба</b><small>Дополнительно: новый короб + сборка каждой единицы товара.</small></span>
+          <span><b>Требуется пересборка в новые короба</b><small>Дополнительно: 100 ₽ за новый короб + 20 ₽ за каждую пересобираемую единицу товара. Количество отгрузочных коробов считаем отдельно — оно может отличаться от исходного.</small></span>
         </label>
-        <div id="reboxFields" class="field-row hidden"><label>Новых коробов<input id="newBoxes" type="number" min="0" step="1" inputmode="numeric" placeholder="0"></label><div class="tariff inline"><span>Доплата</span><b><span id="newBoxRateLabel">100</span> ₽/кор. + <span id="reboxItemRateLabel">20</span> ₽/шт.</b></div></div>
+        <div id="reboxFields" class="field-row hidden">
+          <label>Новых отгрузочных коробов<input id="newBoxes" type="number" min="0" step="1" inputmode="numeric" placeholder="0"></label>
+          <div class="tariff inline"><span>Доплата</span><b><span id="newBoxRateLabel">100</span> ₽/кор. + <span id="reboxItemRateLabel">20</span> ₽/шт.</b></div>
+        </div>
       </div>
 
       <div id="fbsBlock" class="ship-block hidden">
-        <div class="notice">Размер короба для предварительного расчёта: 60 × 40 × 40 см (96 л). Точное количество коробов может отличаться из-за формы товара и неполной укладки.</div>
+        <div class="notice">Короб 60 × 40 × 40 см (96 л). Расчёт по объёму — предварительный: фактическое количество зависит от укладки.</div>
         <div class="choice-grid">
           <label class="choice"><input type="radio" name="fbsBoxesMode" value="estimate" checked><span><b>Рассчитать примерно</b><small>По суммарному объёму партии</small></span></label>
           <label class="choice"><input type="radio" name="fbsBoxesMode" value="manual"><span><b>Указать короба</b><small>Если клиент уже знает количество</small></span></label>
+          <label class="choice"><input type="radio" name="fbsBoxesMode" value="unknown"><span><b>Не знаю — определить при сборке</b><small>Стоимость коробов и доставки уточним после сборки</small></span></label>
         </div>
-        <div class="field-row"><label>Коробов FBS<input id="fbsBoxes" type="number" min="0" step="1" inputmode="numeric" placeholder="0"></label><label>Заказов в день<input id="dailyOrders" type="number" min="0" step="1" inputmode="numeric" placeholder="0"></label></div>
+        <div class="field-row">
+          <label>Коробов FBS<input id="fbsBoxes" type="number" min="0" step="1" inputmode="numeric" placeholder="0"></label>
+          <label>Заказов в день<input id="dailyOrders" type="number" min="0" step="1" inputmode="numeric" placeholder="0"></label>
+        </div>
         <div class="calc-note" id="fbsBoxHint"></div>
         <div class="tariff-block">
           <h3>Обработка товара</h3>
           <p><b><span id="fbsVolumeRateLabel">10</span> ₽ за литр</b>, но не менее <b><span id="fbsVolumeMinLabel">20</span> ₽ за единицу товара</b>.</p>
-          <p>Транспортный короб 60 × 40 × 40 см — <b><span id="fbsBoxRateLabel">100</span> ₽/короб</b>.</p>
+          <p>Транспортный короб 60 × 40 × 40 см — <b><span id="fbsBoxRateLabel">100</span> ₽/короб</b>. Формирование 150 ₽ в FBS не начисляется.</p>
         </div>
         <div class="tariff-block">
           <h3>Доставка</h3>
-          <p>До установленного дневного порога — <b><span id="fbsDeliveryBoxRateLabel">500</span> ₽ за короб</b>. Если заказов больше порога, отдельная плата за доставку коробов не начисляется: остаётся обработка по объёму.</p>
+          <p>До дневного порога — <b><span id="fbsDeliveryBoxRateLabel">500</span> ₽ за короб</b>. Если заказов больше порога — доставка коробов не начисляется, остаётся только обработка по объёму.</p>
           <label>Дневной порог заказов <input id="dailyThreshold" type="number" min="0" step="1" inputmode="numeric" placeholder="не задан"></label>
-          <small class="warning">Пока числовой порог не указан, калькулятор применяет доставку 500 ₽/короб и не переключает схему автоматически.</small>
+          <small class="warning">Пока порог не указан, доставка считается по 500 ₽/короб.</small>
         </div>
       </div>
       <div class="actions"><button class="ghost" data-go="storage" type="button">Назад</button><button class="primary" data-go="result" type="button">Показать расчёт</button></div>
     </section>
 
+    <!-- 9. ИТОГ -->
     <section id="result" class="panel">
-      <div class="section-head"><div><span class="eyebrow">Этап 6</span><h2>Предварительный расчёт</h2></div><button id="copyCalc" class="secondary" type="button">Скопировать</button></div>
-      <div class="stage-banner result-banner">
-        <div><span class="stage-kicker">06 · ИТОГ</span><strong>Прозрачный предварительный расчёт</strong><small>Видно, из каких операций складывается сумма. После расчёта клиент может заказать звонок.</small></div>
-        <svg class="stage-svg" viewBox="0 0 240 150" aria-hidden="true"><rect x="10" y="18" width="220" height="120" rx="22" fill="#f3ead7"/><rect x="40" y="35" width="76" height="83" rx="10" fill="#17243b"/><rect x="51" y="46" width="54" height="20" rx="3" fill="#fffaf0"/><g fill="#d6a83a"><circle cx="57" cy="82" r="7"/><circle cx="78" cy="82" r="7"/><circle cx="99" cy="82" r="7"/><circle cx="57" cy="103" r="7"/><circle cx="78" cy="103" r="7"/><circle cx="99" cy="103" r="7"/></g><rect x="142" y="47" width="55" height="76" rx="10" fill="#fffaf0" stroke="#17243b" stroke-width="4"/><path d="M153 63h34M153 76h26M153 89h30" stroke="#17243b" stroke-width="4"/><circle cx="169" cy="109" r="6" fill="#d6a83a"/><path d="M116 78h22M132 78l-9-9M132 78l-9 9" stroke="#d6a83a" stroke-width="5" fill="none"/></svg>
-      </div>
+      <div class="section-head"><div><span class="eyebrow">Этап 9</span><h2>Предварительный расчёт</h2></div><button id="copyCalc" class="secondary" type="button">Скопировать</button></div>
+      <div class="stage-banner result-banner"><div><span class="stage-kicker">09 · ИТОГ</span><strong>Прозрачный предварительный расчёт</strong><small>Видно, из каких операций складывается сумма. Внизу — два варианта: заказать звонок или завершить.</small></div></div>
       <div class="total-card"><span>Итого</span><b id="grandTotal">0 ₽</b><small id="perUnit">0 ₽ / шт.</small></div>
       <div id="resultRows" class="result-list"></div>
       <div class="notice important">Расчёт предварительный. Фактическое количество коробов, паллет и стоимость отдельных операций уточняются после приёмки и упаковки товара.</div>
+
       <div class="decision">
-        <h3>Хотите продолжить?</h3>
-        <p>Можно подготовить заявку на звонок менеджера или завершить расчёт.</p>
+        <h3>Что дальше?</h3>
+        <p>Оставьте заявку на звонок менеджера — или завершите расчёт, если пока не готовы.</p>
         <button id="callbackOpen" class="primary" type="button">Заказать звонок</button>
-        <button id="finishBtn" class="ghost" type="button">Завершить расчёт</button>
+        <button id="finishBtn" class="ghost" type="button">Спасибо, пока не требуется</button>
       </div>
+
+      <div id="callback" class="callback-block hidden">
+        <div class="section-head"><div><span class="eyebrow">Заявка</span><h3>Заказать звонок</h3></div><button id="callbackClose" class="ghost tiny" type="button">✕</button></div>
+        <div class="stack">
+          <label>Организация<input id="cbOrg" type="text"></label>
+          <label>Telegram<input id="cbTg" type="text"></label>
+          <label>Телефон<input id="cbPhone" type="tel"></label>
+          <label>Удобное время для звонка<textarea id="cbComment" rows="3" placeholder="Например: завтра с 10 до 13"></textarea></label>
+        </div>
+        <div class="notice">Мы подготовим текст заявки и откроем Telegram для отправки менеджеру АТЛАНТ.</div>
+        <button id="sendCallback" class="primary" type="button">Подтвердить заявку и открыть Telegram</button>
+      </div>
+
       <div class="actions"><button class="ghost" data-go="ship" type="button">Назад</button><button id="printBtn" class="secondary" type="button">Печать / PDF</button></div>
     </section>
 
-    <section id="callback" class="panel modal-card hidden">
-      <div class="section-head"><div><span class="eyebrow">Заявка</span><h2>Заказать звонок</h2></div><button id="callbackClose" class="ghost tiny" type="button">✕</button></div>
-      <div class="stack">
-        <label>Имя<input id="cbName" type="text" placeholder="Как к вам обращаться"></label>
-        <label>Телефон<input id="cbPhone" type="tel" placeholder="+7 ..."></label>
-        <label>Комментарий<textarea id="cbComment" rows="3" placeholder="Удобное время для звонка"></textarea></label>
-      </div>
-      <div class="notice">Сайт подготовит текст заявки и откроет Telegram для отправки менеджеру АТЛАНТ. Это позволяет работать на бесплатном статическом хостинге без отдельного сервера.</div>
-      <button id="sendCallback" class="primary" type="button">Подготовить заявку и открыть Telegram</button>
-    </section>
-
+    <!-- АДМИН -->
     <section id="adminPanel" class="admin-panel hidden">
       <div class="section-head"><div><span class="eyebrow">Локальные настройки</span><h2>Тарифы</h2></div><button id="adminClose" class="ghost tiny" type="button">✕</button></div>
       <p class="hint">Изменения сохраняются только в этом браузере. Клиентский расчёт использует сохранённые здесь значения.</p>
       <div id="adminFields" class="admin-grid"></div>
-      <div class="actions"><button id="resetRates" class="ghost" type="button">Сбросить</button><button id="saveRates" class="primary" type="button">Сохранить тарифы</button></div>
+      <h3 class="block-title">Журнал запросов</h3>
+      <div id="journalBox" class="result-list"></div>
+      <div class="actions">
+        <button id="resetRates" class="ghost" type="button">Сбросить тарифы</button>
+        <button id="clearJournal" class="ghost" type="button">Очистить журнал</button>
+        <button id="saveRates" class="primary" type="button">Сохранить тарифы</button>
+      </div>
     </section>
   </main>
 
@@ -225,7 +274,7 @@
       <div class="sku-head"><b class="sku-title">Товар</b><button class="removeSku ghost tiny" type="button">Удалить</button></div>
       <div class="field-row"><label>Название / SKU<input class="skuName" type="text" placeholder="Например, чехол"></label><label>Количество, шт.<input class="skuQty" type="number" min="0" step="1" inputmode="numeric" placeholder="0"></label></div>
       <div class="field-row three"><label>Длина, см<input class="skuL" type="number" min="0" step="0.1" inputmode="decimal"></label><label>Ширина, см<input class="skuW" type="number" min="0" step="0.1" inputmode="decimal"></label><label>Высота, см<input class="skuH" type="number" min="0" step="0.1" inputmode="decimal"></label></div>
-      <div class="sku-meta"><span>Объём 1 шт.: <b class="unitLiters">0 л</b></span><span>Объём позиции: <b class="lineLiters">0 л</b></span></div>
+      <div class="sku-meta"><span>Объём 1 шт.: <b class="unitLiters">0 л</b></span><span>Объём позиции: <b class="lineLiters">0 л</b></span><span>Коробов: <b class="lineBoxes">0</b></span></div>
     </article>
   </template>
 
